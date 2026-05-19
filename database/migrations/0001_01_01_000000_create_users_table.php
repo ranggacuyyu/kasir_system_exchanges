@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',255);
             $table->enum('user_type', ['admin', 'kasir'])->default('kasir');
+            $table->decimal('gaji', 10, 2)->default(0);
             $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();
