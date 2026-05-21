@@ -22,6 +22,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/sail (SAIL) - v1
 - pestphp/pest (PEST) - v3
 - phpunit/phpunit (PHPUNIT) - v11
+- alpinejs (ALPINEJS) - v3
 - tailwindcss (TAILWINDCSS) - v4
 
 ## Skills Activation
@@ -172,6 +173,14 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 ### Models
 
 - Casts can and likely should be set in a `casts()` method on a model rather than the `$casts` property. Follow existing conventions from other models.
+
+=== livewire/core rules ===
+
+# Livewire
+
+- Livewire allow to build dynamic, reactive interfaces in PHP without writing JavaScript.
+- You can use Alpine.js for client-side interactions instead of JavaScript frameworks.
+- Keep state server-side so the UI reflects it. Validate and authorize in actions as you would in HTTP requests.
 
 === volt/core rules ===
 
