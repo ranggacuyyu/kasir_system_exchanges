@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Login - Sistem Toko</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    @livewireStyles
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<body class="min-h-screen">
-
-    <!-- Navbar -->
+<!-- Navbar -->
     <div class="fixed z-50 md:flex w-auto flex-row bg-gradient-to-r md:right-0 md:left-0 from-maroon-primary to-maroon-dark md:mb-0 mb-4 left-4 right-4 bottom-0 md:top-0 md:bottom-auto rounded-3xl md:rounded-none shadow-md md:shadow-none">
 
         <div class="p-4 text-zinc-100 font-bold text-lg pl-8 hidden md:block">
@@ -63,13 +44,3 @@
 
         </div>
     </div>
-
-    <!-- Content -->
-    <main class="pt-0 md:pt-14 pb-24 md:pb-0">
-
-        {{-- Isi halaman --}}
-        @yield('content')
-        
-    </main>
-
-</body>

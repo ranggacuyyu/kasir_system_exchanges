@@ -6,6 +6,6 @@ class KasirController extends Controller
 {
     public function dashboard()
     {
-        return view('components.kasir.pesanan');
+        return view('kasir.pesanan');
     }
 }
