@@ -15,6 +15,7 @@ class AuthController extends Controller {
     */
     public function login()
     {
+        
         return view('layouts.nonuser.index');
     }
 }

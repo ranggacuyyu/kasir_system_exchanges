@@ -19,7 +19,7 @@
 <body class="bg-linear-color overflow-hidden">
 
     {{-- PARTICLE LAYER --}}
-    {{-- <div
+    <div
         wire:ignore
         x-data="particleField()"
         x-init="init()"
@@ -31,7 +31,7 @@
                 :style="particleStyle(p)">
             </div>
         </template>
-    </div> --}}
+    </div>
 
     {{-- CONTENT LAYER --}}
     <div class="relative z-10">
@@ -40,13 +40,13 @@
 
     @livewireScripts
 
-   {{--  <script>
+    <script>
         function particleField() {
             return {
                 particles: [],
 
                 init() {
-                    this.generateParticles(20);
+                    this.generateParticles(25);
                 },
 
                 generateParticles(count) {
@@ -55,7 +55,7 @@
                             id: i,
                             x: Math.random() * window.innerWidth,
                             y: Math.random() * window.innerHeight,
-                            size: Math.random() * 10 + 2,
+                            size: Math.random() * 15 + 2,
                             speed: Math.random() * 0.5 + 0.2,
                             drift: Math.random() * 0.6 - 0.3,
                             opacity: Math.random() * 0.6 + 0.2
@@ -95,7 +95,7 @@
                 }
             }
         }
-    </script> --}}
+    </script>
 
 </body>
 

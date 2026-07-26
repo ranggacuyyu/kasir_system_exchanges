@@ -5,10 +5,11 @@
 
 <button
     type="button"
+    x-data
     @click="selected = @js($value)"
     wire:click="setUserType(@js($value))"
     :class="selected === @js($value)
-        ? 'bg-var border-red-500 text-white scale-105'
+        ? 'bg-liner-color border-[var(--color-maroon-primary)] text-white scale-105'
         : 'bg-white border-gray-300 text-gray-700'"
     {{ $attributes->merge(['class' => '
         flex-1 p-4 border-2 rounded-xl

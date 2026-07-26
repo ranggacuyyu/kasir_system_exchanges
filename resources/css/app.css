@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
 
@@ -58,7 +60,7 @@
             var(--color-base) 100%);
 
     --background-image-liner-color:
-        linear-gradient(135deg,
+        linear-gradient(120deg,
             var(--color-maroon-primary) 0%,
             var(--color-maroon-secondary) 100%);
 
@@ -86,6 +88,10 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
+    }
+
+    body {
+        @apply bg-white/95 text-accent-content;
     }
 }
 
