@@ -10,4 +10,8 @@ Route::get('/kasir', [KasirController::class, 'cekUser'])->name('login');
 
 Route::get('/kasir/dashboard', [KasirController::class, 'dashboard'])->name('kasir.dashboard');
 
+Route::get('/kasir/hitung', function () {
+    return view('kasir.hitung');
+})->name('kasir.hitung');
+
 

@@ -1,42 +1,33 @@
-<div class="w-full min-h-screen items-center justify-center flex">
-    <div class="bg-white rounded-4xl w-5xl h-143 flex backdrop-blur-3xl overflow-hidden shadow-2xl pt-3 px-3">
+<div class="w-full min-h-screen items-center justify-center flex p-4 sm:p-6 lg:p-8">
+    <div class="bg-white rounded-3xl sm:rounded-4xl w-full max-w-5xl min-h-fit lg:h-[570px] flex flex-col lg:flex-row backdrop-blur-3xl overflow-hidden shadow-2xl p-2 sm:p-3">
         {{-- bagian kiri card --}}
         <div
-            class="bg-liner-color w-20% h-full rounded-t-3xl justify-center items-center hidden lg:flex flex-col position-relative p-5">
-            <div
-                class="position-relative mb-6 bg-white rounded-full w-30 h-30 flex items-center justify-center animate-rotate-slow shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                <i class="bi bi-shop text-5xl text-maroon-primary"></i>
+            class="bg-liner-color w-full lg:w-[36%] xl:w-2/5 rounded-2xl lg:rounded-3xl justify-center items-center hidden lg:flex flex-col relative p-6 lg:p-8">
+            <div class="relative mb-6 bg-white rounded-full w-28 h-28 lg:w-30 lg:h-30 flex items-center justify-center animate-rotate-slow shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+                <i class="bi bi-shop text-4xl lg:text-5xl text-maroon-primary"></i>
             </div>
-            <h1 class="text-2xl font-bold text-center position-relative my-4 text-white">Sistem Rumah Makan
+            <h1 class="text-xl lg:text-2xl font-bold text-center relative my-4 text-white">Sistem Rumah Makan
                 <br>
                 lapau uda sutan
             </h1>
-            <p class=" text-center position-relative text-white/80">Platform terintegrasi untuk mengelola
+            <p class="text-center relative text-white/80 text-xs lg:text-sm leading-relaxed">Platform terintegrasi untuk mengelola
                 kasir
                 dengan lebih efisien dan modern. Kelola transaksi,
                 inventori, dan laporan dengan mudah.</p>
         </div>
 
         {{-- bagian kanan card --}}
-        <div class="h-full w-full justify-center items-center flex flex-col position-relative py-5 pl-8 pr-5">
-
-            <!-- Mobile Logo -->
-            <div class="text-center d-lg-none mb-4 block lg:hidden">
-                <div
-                    class="mb-6 bg-white rounded-full w-30 h-30 flex items-center justify-center animate-rotate-slow shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
-                    <i class="bi bi-shop text-5xl text-maroon-primary"></i>
-                </div>
-            </div>
-
+        <div class="h-full w-full lg:w-[64%] xl:w-3/5 justify-center items-center flex flex-col relative py-4 sm:py-6 px-4 sm:px-8 lg:px-10 my-auto">
+            
             <!-- Login Header -->
-            <div class="text-center mb-4">
-                <h2 class="text-maroon-primary text-3xl font-bold mb-0.5">Selamat Datang</h2>
-                <p class="text-gray-600 text-sm">Silakan login untuk melanjutkan</p>
+            <div class="text-center mb-4 sm:mb-6">
+                <h2 class="text-maroon-primary text-2xl sm:text-3xl font-bold mb-0.5">Selamat Datang</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Silakan login untuk melanjutkan</p>
             </div>
 
             <!-- Error Alert -->
             <div id="errorAlert"
-                class="hidden items-center justify-between rounded-xl border border-red-300 bg-red-100 px-4 py-3 text-red-700 shadow-md">
+                class="hidden items-center justify-between rounded-xl border border-red-300 bg-red-100 px-4 py-3 text-red-700 shadow-md w-full mb-4">
 
                 <div class="flex items-center gap-2">
                     <i class="bi bi-exclamation-triangle-fill text-lg"></i>
@@ -57,9 +48,9 @@
             <form wire:submit.prevent="login" class="w-full" x-data="{ selected: @js($user_type) }">
                 @csrf
                 {{-- User Type Toggle --}}
-                <div class="mb-8 w-full">
+                <div class="mb-5 sm:mb-6 w-full">
 
-                    <div class="flex w-full gap-4">
+                    <div class="flex w-full gap-3 sm:gap-4">
                         <x-login.button-select value="kasir" icon="bi-cash-coin">
                             Kasir
                         </x-login.button-select>
@@ -72,10 +63,8 @@
 
                 </div>
 
-
-
                 <!-- Username Field -->
-                <div class="space-y-6 w-full">
+                <div class="space-y-4 sm:space-y-5 w-full">
 
                     <!-- Username -->
                     <div class="relative">
@@ -96,7 +85,7 @@
                                             rounded-xl
                                             border-2 border-[var(--color-maroon-primary)]
                                             bg-white
-                                            py-4 pl-12 pr-4
+                                            py-3.5 sm:py-4 pl-12 pr-4
                                             text-sm text-maroon-primary
 
                                             outline-none
@@ -151,7 +140,7 @@
                                         border-2 border-[var(--color-maroon-primary)]
                                         bg-white
 
-                                        py-4 pl-12 pr-12
+                                        py-3.5 sm:py-4 pl-12 pr-12
 
                                         text-sm text-[var(--color-maroon-primary)]
 
@@ -206,7 +195,7 @@
                 </div>
 
                 <!-- Remember & Forgot -->
-                <div class="flex items-center justify-between mb-4 w-full mt-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4 sm:mb-5 w-full mt-4">
 
                     <!-- Remember Me -->
                     <label class="flex items-center gap-3 cursor-pointer select-none">
@@ -243,7 +232,7 @@
                 <div x-data="{ loading: false }" class="w-full">
 
                     <button type="submit" id="loginBtn" @click="loading = true" x-on:disabled="loading"
-                        class="bg-[var(--color-maroon-primary)] border-0 py-3 font-semibold text-xl rounded-xl relative w-full
+                        class="bg-[var(--color-maroon-primary)] border-0 py-3 font-semibold text-lg sm:text-xl rounded-xl relative w-full
                                             text-white transition-all duration-300 ease-in-out overflow-hidden
                                             hover:shadow-[0_10px_25px_rgba(114,28,36,0.3)] hover:translate-y-[-3px]
                                             active:shadow-none active:translate-y-0
