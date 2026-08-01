@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_shifts', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('shift_id');
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
-            $table->boolean('status')->default(true);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id('id_categories');
+            $table->string('name_categories', 100);
+            $table->text('description')->nullable();
+            $table->string('status', 50)->default('active');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_shifts');
+        Schema::dropIfExists('categories');
     }
 };
