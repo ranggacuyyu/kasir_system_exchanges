@@ -29,13 +29,13 @@
             'id' => 'stok',
             'label' => 'Stok',
             'icon' => 'fa-solid fa-boxes-stacked',
-            'route' => '#',
+            'route' => route('kasir.stok'),
         ],
         [
             'id' => 'laporan',
             'label' => 'Laporan',
             'icon' => 'fa-solid fa-chart-line',
-            'route' => '#',
+            'route' => route('kasir.laporan'),
         ],
     ];
 @endphp

@@ -1,21 +1,37 @@
 <?php
+
 namespace App\Http\Controllers;
 
-class AuthController extends Controller {
+use Illuminate\Support\Facades\Auth;
 
-    /*
-    * Method untuk memproses login penggunaParameter
-
-
-    *alidasi data pengguna yang dikirim melalui form login, seperti email dan password.
-    Jika validasi berhasil, maka pengguna akan diarahkan ke halaman dashboard atau halaman utama aplikasi. Jika validasi gagal, maka pengguna akan tetap berada di halaman login dengan pesan error yang sesuai.
-
-    *@param  $id : id barang yang dikirim dari URL
-    *@return View Halaman login di folder auth
-    */
+class AuthController extends Controller
+{
+    // fungsi untuk mengarahkan user jika sudah login dan memiliki session maka
+    // tidak perlu lagi login, akan langsung diarahkan ke dashboard sesuai role
+    // return view : Halaman login di folder auth
     public function login()
     {
-        
+        // logic melakukan pegecekan dan mengarahkan user ke dashboard
+        /* if (Auth::check()) {
+            $role = Auth::user()->role;
+            if ($role == 'kasir') {
+                return redirect()->route('kasir.dashboard');
+            } elseif ($role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+        } */
+
+        /* $auth_status = Session::get('auth_status');
+        if ($auth_status == true) {
+            $role = Session::get('role');
+            if ($role == 'kasir') {
+                return redirect()->route('kasir.dashboard');
+            } elseif ($role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+        } */
+
+        // jika user tidak login maka akan diarahkan ke halaman login
         return view('layouts.nonuser.index');
     }
 }

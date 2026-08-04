@@ -63,9 +63,9 @@
                         <div class="relative w-full sm:w-64">
                             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 text-sm"></i>
                             <input type="text"
-                                   x-model="searchQuery"
-                                   placeholder="Cari menu makanan / minuman..."
-                                   class="w-full bg-slate-50 border border-zinc-200 rounded-xl py-2 pl-10 pr-4 text-xs md:text-sm text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-maroon-primary focus:ring-2 focus:ring-maroon-primary/20 transition-all">
+                                x-model="searchQuery"
+                                placeholder="Cari menu makanan / minuman..."
+                                class="w-full bg-slate-50 border border-zinc-200 rounded-xl py-2 pl-10 pr-4 text-xs md:text-sm text-zinc-800 placeholder-zinc-400 focus:outline-none focus:border-maroon-primary focus:ring-2 focus:ring-maroon-primary/20 transition-all">
                             <button x-show="searchQuery.length > 0"
                                     @click="searchQuery = ''"
                                     class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 text-xs">

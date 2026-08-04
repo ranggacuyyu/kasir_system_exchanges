@@ -8,25 +8,30 @@ use Illuminate\Support\Facades\Hash;
 
 class Authservice
 {
-    public function login(string $username, string $password, string $user_type)
+    // fungsi yang megambil parameter dan controller site
+    /**
+     * Login user dengan credentials yang diberikan
+     * @param array $credentials array yang berisi credentials user
+     * @param bool $rememberMe boolean untuk remember user
+     * @return array array yang berisi status, message, dan redirect url
+     */
+    public function login(array $credentials, bool $rememberMe = false): array
     {
-        // mengambil data user yang sesuai dengan username dan user_type yang diberikan
-        $user = User::select('id', 'username', 'password', 'user_type', 'is_active')
-            ->where('username', $username)
-            ->where('user_type', $user_type)
-            ->first();
+        // melakukan login user
+        $user = (!Auth::attempt([
+            'email' => $credentials['email'],
+            'password' => $credentials['password'],
+            'role' => $credentials['role']
+        ], $rememberMe)) {
+            throw ValidationException::withMessages([
+                'email' => 'Username atau password salah.',
+            ]);
+        };
 
-        // melakukan pengecekan apakah user ditemukan dan penyesuaian password hash
-        if (!$user || !Hash::check($password, $user->password)) {
-            // mengembalikan vaidasi
-            return $this->valueReturn(false, 'Username atau password salah.');
-        }
+        $user = Auth::user();
 
-        // melakukan pengecekan apakah user aktif
-        if (!$user->is_active) {
-            // mengembalikan validasi
-            return $this->valueReturn(false, 'Akun Anda tidak aktif. Silakan hubungi administrator.');
-        }
+        // mengecek status aktif user
+        if ($user->status )
 
         // melakukan login user
         Auth::login($user);
