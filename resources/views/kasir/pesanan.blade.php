@@ -28,7 +28,7 @@
     </style>
 </head>
 
-<body class="min-h-screen bg-zinc-50 text-zinc-800 antialiased" x-data="{ activeTab: 'utama' }">
+<body class="min-h-screen bg-zinc-50 text-zinc-800 antialiased" x-data="{ activeTab: 'utama', drinkFilter: 'proses' }">
 
     {{-- Navbar --}}
     <x-kasir.navbar active="pesanan" />
@@ -45,7 +45,7 @@
                         <i class="fa-solid fa-layer-group"></i>
                     </div>
                     <div>
-                        <h2 class="text-sm sm:text-base font-extrabold text-zinc-900 leading-tight">Management Station Pesanan</h2>
+                        <h2 class="text-sm font-extrabold text-zinc-900 leading-tight">Management Station Pesanan</h2>
                         <p class="text-xs text-zinc-500">Geser tampilan untuk beralih antara Pesanan Utama dan Stasiun Minuman</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         :class="activeTab === 'minuman' ? 'bg-maroon-primary text-white shadow-md font-bold' : 'text-zinc-600 hover:text-zinc-900 font-semibold'"
                         class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm transition-all duration-300 cursor-pointer relative">
                         <i class="fa-solid fa-glass-water text-xs"></i>
-                        <span>Stasiun Pesanan Minuman</span>
+                        <span>Pesanan Minuman</span>
                         <span class="ml-1 px-1.5 py-0.5 rounded-full bg-amber-400 text-slate-900 font-black text-[10px]">5 Bar</span>
                     </button>
                 </div>
@@ -183,7 +183,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 backdrop-blur-sm">
+                                    <span class="md:inline-flex hidden items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/30 backdrop-blur-sm">
                                         <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
                                         Belum Dibayar
                                     </span>
@@ -338,7 +338,7 @@
 
                         {{-- Drink Order Queue Management Board --}}
                         <div class="bg-white rounded-xl sm:rounded-2xl border border-zinc-200 shadow-md p-3.5 sm:p-5 space-y-3 sm:space-y-4">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-100">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-zinc-100">
                                 <div>
                                     <h3 class="text-sm sm:text-base font-extrabold text-zinc-900 flex items-center gap-2">
                                         <i class="fa-solid fa-wine-glass text-maroon-primary"></i>
@@ -347,12 +347,30 @@
                                     <p class="text-xs text-zinc-500">Kelola dan perbarui status pembuatan minuman per meja</p>
                                 </div>
 
-                                <div class="flex items-center gap-2">
-                                    <button class="px-3 py-1.5 bg-zinc-100 text-zinc-700 font-bold text-xs rounded-xl hover:bg-zinc-200 transition">
-                                        <i class="fa-solid fa-filter mr-1"></i> Filter Bar
-                                    </button>
-                                    <button class="px-3 py-1.5 bg-maroon-primary text-white font-bold text-xs rounded-xl hover:bg-maroon-dark transition shadow-sm">
-                                        <i class="fa-solid fa-print mr-1"></i> Cetak Ticket Bar
+                                {{-- Status Filter Switcher --}}
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <div class="flex items-center p-1 bg-zinc-100 rounded-xl border border-zinc-200/80">
+                                        {{-- Tab 1: Combined Active Orders (Mulai Racik + Siap Diantar) --}}
+                                        <button @click="drinkFilter = 'proses'" 
+                                            :class="drinkFilter === 'proses' ? 'bg-maroon-primary text-white shadow-sm font-bold' : 'text-zinc-600 hover:text-zinc-900 font-semibold'"
+                                            class="px-3 py-1.5 rounded-lg text-xs transition cursor-pointer flex items-center gap-1.5">
+                                            <i class="fa-solid fa-fire text-amber-300 text-[11px]"></i>
+                                            <span>Proses & Antrean Bar</span>
+                                            <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-amber-400 text-zinc-900 font-extrabold">2</span>
+                                        </button>
+
+                                        {{-- Tab 2: Separated Completed Orders (Selesai Diantar) --}}
+                                        <button @click="drinkFilter = 'selesai'" 
+                                            :class="drinkFilter === 'selesai' ? 'bg-emerald-600 text-white shadow-sm font-bold' : 'text-zinc-600 hover:text-zinc-900 font-semibold'"
+                                            class="px-3 py-1.5 rounded-lg text-xs transition cursor-pointer flex items-center gap-1.5">
+                                            <i class="fa-solid fa-circle-check text-xs"></i>
+                                            <span>Selesai Diantar</span>
+                                            <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-700/60 text-white font-extrabold">1</span>
+                                        </button>
+                                    </div>
+
+                                    <button class="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs rounded-xl transition cursor-pointer hidden sm:flex items-center gap-1">
+                                        <i class="fa-solid fa-print text-zinc-400"></i> Cetak Ticket
                                     </button>
                                 </div>
                             </div>
@@ -360,8 +378,8 @@
                             {{-- Drink Orders Grid Cards --}}
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                                 
-                                {{-- Card 1: Sedang Dibuat --}}
-                                <div class="bg-zinc-50 rounded-xl border-2 border-amber-400 p-3.5 sm:p-4 shadow-sm relative space-y-3">
+                                {{-- Card 1: Sedang Dibuat (Digabung di Tab Proses & Antrean) --}}
+                                <div x-show="drinkFilter === 'proses'" class="bg-zinc-50 rounded-xl border-2 border-amber-400 p-3.5 sm:p-4 shadow-sm relative space-y-3">
                                     <div class="flex items-center justify-between border-b border-zinc-200 pb-2">
                                         <div>
                                             <span class="text-xs font-bold text-zinc-400 block uppercase">Meja 02 (Dine In)</span>
@@ -392,14 +410,14 @@
                                     </div>
 
                                     <div class="pt-2">
-                                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition">
+                                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition cursor-pointer">
                                             <i class="fa-solid fa-circle-check"></i> Tandai Siap Diantar
                                         </button>
                                     </div>
                                 </div>
 
-                                {{-- Card 2: Menunggu Barista --}}
-                                <div class="bg-white rounded-xl border border-zinc-200 p-3.5 sm:p-4 shadow-sm space-y-3">
+                                {{-- Card 2: Menunggu Barista (Digabung di Tab Proses & Antrean) --}}
+                                <div x-show="drinkFilter === 'proses'" class="bg-white rounded-xl border border-zinc-200 p-3.5 sm:p-4 shadow-sm space-y-3">
                                     <div class="flex items-center justify-between border-b border-zinc-100 pb-2">
                                         <div>
                                             <span class="text-xs font-bold text-zinc-400 block uppercase">Meja 05 (Dine In)</span>
@@ -429,14 +447,14 @@
                                     </div>
 
                                     <div class="pt-2">
-                                        <button class="w-full bg-maroon-primary hover:bg-maroon-dark text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition">
+                                        <button class="w-full bg-maroon-primary hover:bg-maroon-dark text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition cursor-pointer">
                                             <i class="fa-solid fa-fire"></i> Mulai Racik Minuman
                                         </button>
                                     </div>
                                 </div>
 
-                                {{-- Card 3: Selesai --}}
-                                <div class="bg-white rounded-xl border border-zinc-200 p-3.5 sm:p-4 shadow-sm opacity-80 space-y-3">
+                                {{-- Card 3: Selesai Diantar (Dipisahkan Khusus di Tab Selesai Diantar) --}}
+                                <div x-show="drinkFilter === 'selesai'" class="bg-white rounded-xl border border-zinc-200 p-3.5 sm:p-4 shadow-sm opacity-90 space-y-3">
                                     <div class="flex items-center justify-between border-b border-zinc-100 pb-2">
                                         <div>
                                             <span class="text-xs font-bold text-zinc-400 block uppercase">Takeaway #04</span>
@@ -458,8 +476,8 @@
                                     </div>
 
                                     <div class="pt-2">
-                                        <button class="w-full bg-zinc-200 text-zinc-700 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1 cursor-default" disabled>
-                                            <i class="fa-solid fa-check-double"></i> Sudah Diantar ke Meja
+                                        <button class="w-full bg-zinc-100 text-zinc-500 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1 cursor-default border border-zinc-200" disabled>
+                                            <i class="fa-solid fa-check-double text-emerald-600"></i> Sudah Diantar ke Meja
                                         </button>
                                     </div>
                                 </div>

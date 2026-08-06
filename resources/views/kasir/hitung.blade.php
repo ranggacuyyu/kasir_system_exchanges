@@ -56,8 +56,8 @@
                 {{-- bagian untuk card menu dan ada gambar menu juga dengan filter makanan,minuman, dan sarapan --}}
                 <div class="w-full lg:w-7/12 xl:w-2/3 flex flex-col gap-4">
 
-                    <!-- Filter & Search Toolbar (Sticky di atas area menu) -->
-                    <div class="bg-white p-3.5 md:p-4 rounded-2xl border border-zinc-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 sticky top-14 md:top-20 z-10">
+                    <!-- Filter & Search Toolbar (Sticky di atas area menu saat scroll) -->
+                    <div class="bg-white/95 backdrop-blur-md p-3.5 md:p-4 rounded-2xl border border-zinc-200/80 shadow-md flex flex-col sm:flex-row items-center justify-between gap-3 sticky top-0 md:top-16 z-30">
 
                         <!-- Search Box -->
                         <div class="relative w-full sm:w-64">

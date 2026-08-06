@@ -1,5 +1,5 @@
 @props([
-    'active' => null, // Opsional: 'pesanan', 'hitung', 'stok', 'laporan'
+    'active' => null, // Opsional: 'pesanan', 'hitung', 'stok', 'absensi', 'laporan'
 ])
 
 @php
@@ -8,6 +8,7 @@
         request()->routeIs('kasir.pesanan') || request()->is('kasir/pesanan*') => 'pesanan',
         request()->routeIs('kasir.hitung') || request()->is('kasir/hitung*') => 'hitung',
         request()->routeIs('kasir.stok') || request()->is('kasir/stok*') => 'stok',
+        request()->routeIs('kasir.absensi') || request()->is('kasir/absensi*') => 'absensi',
         request()->routeIs('kasir.laporan') || request()->is('kasir/laporan*') => 'laporan',
         default => 'pesanan',
     };
@@ -30,6 +31,12 @@
             'label' => 'Stok',
             'icon' => 'fa-solid fa-boxes-stacked',
             'route' => route('kasir.stok'),
+        ],
+        [
+            'id' => 'absensi',
+            'label' => 'Absensi',
+            'icon' => 'fa-solid fa-user-check',
+            'route' => route('kasir.absensi'),
         ],
         [
             'id' => 'laporan',
@@ -59,7 +66,7 @@
             @endphp
             
             <a href="{{ $menu['route'] }}" 
-               class="group relative flex flex-col md:flex-row items-center gap-1.5 md:gap-2 px-3 py-1.5 rounded-xl transition-all duration-200 cursor-pointer
+               class="group relative flex flex-col md:flex-row items-center gap-1.5 md:gap-2 px-1 py-1.5 rounded-xl transition-all duration-200 cursor-pointer
                       {{ $isActive 
                           ? 'text-amber-300 font-extrabold bg-white/10 md:bg-white/15 shadow-inner' 
                           : 'text-white/80 hover:text-amber-200 hover:bg-white/5' }}">

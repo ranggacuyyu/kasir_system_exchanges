@@ -39,39 +39,39 @@
         <div class="w-full max-w-7xl mx-auto pt-4 md:pt-6 space-y-6">
 
             {{-- ==================== 1. HEADER & ACTION BAR ==================== --}}
-            <div class="bg-white rounded-2xl p-5 md:p-6 border border-zinc-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-zinc-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-3.5 sm:gap-4">
                 {{-- Top Accent Bar --}}
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-maroon-primary via-red-500 to-amber-500"></div>
 
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-maroon-primary/10 text-maroon-primary flex items-center justify-center font-bold text-xl shrink-0">
+                <div class="flex items-start gap-3 sm:gap-4">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-maroon-primary/10 text-maroon-primary flex items-center justify-center font-bold text-lg sm:text-xl shrink-0">
                         <i class="fa-solid fa-boxes-stacked"></i>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-xs font-semibold">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                Akses Kasir: Kelola & Update Stok
+                    <div class="min-w-0">
+                        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-[10px] sm:text-xs font-semibold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                Akses Kasir: Kelola Stok
                             </span>
-                            <span class="text-xs text-zinc-400 font-medium">• Lapau Uda Sutan</span>
                         </div>
-                        <h1 class="text-xl md:text-2xl font-extrabold text-zinc-900 tracking-tight">Kelola Persediaan & Update Stok</h1>
-                        <p class="text-xs md:text-sm text-zinc-500">Kurangi atau tambahkan jumlah stok porsi/bahan yang ada dan laporkan bumbu yang habis</p>
+                        <h1 class="text-base sm:text-xl md:text-2xl font-extrabold text-zinc-900 tracking-tight leading-snug">Kelola Persediaan</h1>
+                        <p class="text-[11px] sm:text-xs md:text-sm text-zinc-500 mt-0.5">Kurangi atau tambahkan jumlah stok porsi/bahan yang ada dan laporkan bumbu yang habis</p>
                     </div>
                 </div>
 
                 {{-- Action Controls (Tombol Lapor & Cetak) --}}
-                <div class="flex flex-wrap items-center gap-2.5">
+                <div class="flex items-center gap-2 sm:gap-2.5 w-full md:w-auto pt-2 md:pt-0 border-t md:border-t-0 border-zinc-100">
                     <button @click="openReportModal()" 
-                        class="inline-flex items-center justify-center gap-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs md:text-sm px-4 py-2.5 rounded-xl transition duration-200 cursor-pointer">
-                        <i class="fa-solid fa-bullhorn text-rose-600"></i>
-                        <span>+ Lapor Bahan/Bumbu Habis</span>
+                        class="flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition duration-200 cursor-pointer">
+                        <i class="fa-solid fa-bullhorn text-rose-600 text-xs"></i>
+                        <span>+ Lapor Bahan Habis</span>
                     </button>
 
                     <button @click="alert('Mencetak Laporan Stok...')" 
-                        class="inline-flex items-center justify-center gap-2 bg-white hover:bg-zinc-50 text-zinc-700 font-bold text-xs md:text-sm px-3.5 py-2.5 rounded-xl border border-zinc-200 shadow-sm transition">
-                        <i class="fa-solid fa-print text-zinc-400"></i>
-                        <span>Cetak Stok</span>
+                        class="flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-white hover:bg-zinc-50 text-zinc-700 font-bold text-xs sm:text-sm px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-zinc-200 shadow-sm transition">
+                        <i class="fa-solid fa-print text-zinc-400 text-xs"></i>
+                        <span class="hidden sm:inline">Cetak Stok</span>
+                        <span class="inline sm:hidden">Cetak</span>
                     </button>
                 </div>
             </div>
