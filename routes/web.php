@@ -94,3 +94,24 @@ Route::get('/admin/log-aktivitas', function () {
 Route::get('/admin/backup-data', function () {
     return view('admin.backup-data');
 })->name('admin.backup-data');
+
+Route::get('/admin/kelola-meja', function () {
+    return view('admin.kelola-meja');
+})->name('admin.kelola-meja');
+
+// bagian QR Code Ordering Pelanggan
+Route::get('/order/meja/{meja}', function ($meja) {
+    return view('order.welcome', ['meja' => $meja]);
+})->name('order.welcome');
+
+Route::get('/order/menu/{meja}', function ($meja) {
+    return view('order.menu', ['meja' => $meja]);
+})->name('order.menu');
+
+Route::get('/order/checkout/{meja}', function ($meja) {
+    return view('order.checkout', ['meja' => $meja]);
+})->name('order.checkout');
+
+Route::get('/order/status/{orderId}', function ($orderId) {
+    return view('order.status', ['orderId' => $orderId]);
+})->name('order.status');

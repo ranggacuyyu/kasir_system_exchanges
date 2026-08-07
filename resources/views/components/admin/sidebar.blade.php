@@ -137,6 +137,19 @@
                         </span>
                     </a>
 
+                    <!-- Kelola QR & Meja Resto -->
+                    <a href="{{ route('admin.kelola-meja') }}" 
+                       class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition duration-200 text-left border {{ $active === 'kelola-meja' ? 'bg-gradient-to-r from-maroon-primary to-maroon-secondary text-white shadow-lg border-amber-400/50 ring-1 ring-amber-400/30' : 'text-zinc-200 hover:text-white hover:bg-maroon-primary/40 border-transparent' }}">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-qrcode text-sm {{ $active === 'kelola-meja' ? 'text-amber-300' : 'text-amber-400/80' }}"></i>
+                            <span>Kelola QR & Meja Resto</span>
+                        </div>
+                        <span class="px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-emerald-500/30 text-emerald-300">
+                            20 Meja
+                        </span>
+                    </a>
+
+
 
                     <!-- Kelola Akun Kasir -->
                     <a href="{{ route('admin.kelola-kasir') }}" 
