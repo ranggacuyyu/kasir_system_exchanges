@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\RoleEnum;
+use App\Enums\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,12 +26,35 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->name(),
+            'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'no_hp' => fake()->numerify('08##########'),
+            'role' => RoleEnum::KASIR->value,
+            'status' => Status::ACTIVE->value,
             'remember_token' => Str::random(10),
         ];
+    }
+
+    /**
+     * Indicate that the user is an admin.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => RoleEnum::ADMIN->value,
+        ]);
+    }
+
+    /**
+     * Indicate that the user is inactive.
+     */
+    public function inactive(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => Status::INACTIVE->value,
+        ]);
     }
 
     /**
